@@ -11,9 +11,12 @@ const BoardingPass = () => {
         
         {/* Sección QR */}
         <div className="relative p-6 flex-shrink-0 border-b md:border-b-0 md:border-r border-dashed border-gray-300 flex items-center justify-center">
-          {/* Círculos troquelados alineados con la línea punteada */}
-          <div className="absolute -top-3 right-0 translate-x-1/2 w-6 h-6 bg-[#FF8300] rounded-full z-10 border-4 border-white"></div>
-          <div className="absolute -bottom-3 right-0 translate-x-1/2 w-6 h-6 bg-[#FF8300] rounded-full z-10 border-4 border-white"></div>
+          {/* Círculos troquelados */}
+          <div className="hidden md:block absolute -top-3 right-0 translate-x-1/2 w-6 h-6 bg-[#FF8300] rounded-full z-10 border-4 border-white"></div>
+          <div className="hidden md:block absolute -bottom-3 right-0 translate-x-1/2 w-6 h-6 bg-[#FF8300] rounded-full z-10 border-4 border-white"></div>
+          {/* Círculos móviles (versión vertical) */}
+          <div className="md:hidden absolute left-0 bottom-0 translate-y-1/2 w-6 h-6 bg-[#FF8300] rounded-full z-10 border-4 border-white"></div>
+          <div className="md:hidden absolute right-0 bottom-0 translate-y-1/2 w-6 h-6 bg-[#FF8300] rounded-full z-10 border-4 border-white"></div>
 
           <div className="w-32 h-32 bg-white flex items-center justify-center">
             <QRCodeCanvas value="https://jetairways.com/boarding/NikitaSharma" size={110} />
@@ -35,9 +38,9 @@ const BoardingPass = () => {
             </div>
 
             <div className="flex items-center mx-2">
-              <div className="w-16 h-px bg-gray-300"></div>
+              <div className="w-10 h-px bg-gray-300"></div>
               <Plane className="mx-1 text-gray-500 rotate-90" size={18} />
-              <div className="w-16 h-px bg-gray-300"></div>
+              <div className="w-10 h-px bg-gray-300"></div>
             </div>
 
             <div className="text-right">
@@ -62,8 +65,11 @@ const BoardingPass = () => {
             </div>
           </div>
 
+          {/* Línea divisoria */}
+          <div className="border-t border-dashed border-gray-300 mb-4"></div>
+
           {/* Información del pasajero */}
-          <div className="grid grid-cols-5 gap-2 text-xs">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
             <div>
               <p className="text-gray-500">Passenger</p>
               <p className="font-medium text-gray-700">Nikita Sharma</p>
@@ -87,12 +93,17 @@ const BoardingPass = () => {
           </div>
         </div>
 
-        {/* Barra lateral derecha */}
+        {/* Barra lateral derecha (solo en pantallas grandes) */}
         <div className="hidden md:flex bg-blue-900 text-white min-w-[40px] relative">
           <div className="absolute -rotate-90 whitespace-nowrap top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xs font-bold tracking-widest">
             BOARDING PASS ✈ JET AIRWAYS
           </div>
         </div>
+      </div>
+
+      {/* Franja azul en la parte inferior (solo en móviles) */}
+      <div className="md:hidden bg-blue-900 text-white p-4 text-center mt-4">
+        BOARDING PASS ✈ JET AIRWAYS
       </div>
     </div>
   );
