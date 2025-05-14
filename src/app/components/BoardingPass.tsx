@@ -62,9 +62,6 @@ const BoardingPass = () => {
             </div>
           </div>
 
-          {/* Línea divisoria */}
-          <div className="border-t border-dashed border-gray-300 mb-4"></div>
-
           {/* Información del pasajero */}
           <div className="grid grid-cols-5 gap-2 text-xs">
             <div>
